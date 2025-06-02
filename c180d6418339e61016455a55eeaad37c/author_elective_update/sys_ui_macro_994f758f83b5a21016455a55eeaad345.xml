@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_macro">
+    <sys_ui_macro action="DELETE">
+        <active>true</active>
+        <category>general</category>
+        <description/>
+        <media_type/>
+        <name>Upload Excel</name>
+        <scoped_name>x_1758036_scriptin_Upload Excel</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:38:15</sys_created_on>
+        <sys_id>994f758f83b5a21016455a55eeaad345</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Upload Excel</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_update_name>sys_ui_macro_994f758f83b5a21016455a55eeaad345</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-02 13:38:15</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+<button id="upload_excel_btn" class="btn btn-primary">Upload Excel</button>
+<input type="file" id="excel_file_input" style="display:none;" accept=".xlsx" />
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</application>
+        <file_path/>
+        <instance_id>7420b230db16bd9802022a591396199e</instance_id>
+        <instance_name>dev200623</instance_name>
+        <name>sys_ui_macro_994f758f83b5a21016455a55eeaad345</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_macro"&gt;&lt;sys_ui_macro action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;category&gt;general&lt;/category&gt;&lt;description/&gt;&lt;media_type/&gt;&lt;name&gt;Upload Excel&lt;/name&gt;&lt;scoped_name&gt;x_1758036_scriptin_Upload Excel&lt;/scoped_name&gt;&lt;sys_class_name&gt;sys_ui_macro&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-06-02 13:38:15&lt;/sys_created_on&gt;&lt;sys_id&gt;994f758f83b5a21016455a55eeaad345&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Upload Excel&lt;/sys_name&gt;&lt;sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="ScriptingDemo3"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_macro_994f758f83b5a21016455a55eeaad345&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-06-02 13:38:15&lt;/sys_updated_on&gt;&lt;xml&gt;&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null"&gt;
+&lt;button id="upload_excel_btn" class="btn btn-primary"&gt;Upload Excel&lt;/button&gt;
+&lt;input type="file" id="excel_file_input" style="display:none;" accept=".xlsx" /&gt;
+&lt;/j:jelly&gt;]]&gt;&lt;/xml&gt;&lt;/sys_ui_macro&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1212398391</payload_hash>
+        <record_name>Upload Excel</record_name>
+        <reverted_from/>
+        <source>2207e50a83752e1016455a55eeaad3af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:38:15</sys_created_on>
+        <sys_id>a16ff58f83b5a21016455a55eeaad3dd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19730dd3ffd0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-02 13:38:15</sys_updated_on>
+        <type>Macro</type>
+        <update_guid>e16fb90f38b5a2102dd4ec60af367814</update_guid>
+        <update_guid_history>e16fb90f38b5a2102dd4ec60af367814:1212398391</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:50:12</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_macro">sys_ui_macro</sys_db_object>
+        <sys_id>066a56bfbbbe468882fab8e150932a40</sys_id>
+        <sys_metadata>994f758f83b5a21016455a55eeaad345</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Upload Excel</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_scope_delete display_value="">881f797c73974038955b3a07d78ba110</sys_scope_delete>
+        <sys_update_name>sys_ui_macro_994f758f83b5a21016455a55eeaad345</sys_update_name>
+        <sys_update_version display_value="sys_ui_macro_994f758f83b5a21016455a55eeaad345">a16ff58f83b5a21016455a55eeaad3dd</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-02 13:50:12</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

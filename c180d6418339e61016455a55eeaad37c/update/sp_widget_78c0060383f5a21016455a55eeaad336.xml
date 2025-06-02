@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope, spUtil) {
+  var c = this;
+
+  c.uploading = false;
+
+  c.uploadFile = function(input) {
+    var file = input.files[0];
+    if (!file) return;
+
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var base64 = e.target.result.split(',')[1];
+
+      c.uploading = true;
+
+      c.server.get({
+        action: 'process_excel',
+        base64: base64,
+        filename: file.name,
+        table: c.data.table,
+        sys_id: c.data.sys_id
+      }).then(function(response) {
+        c.uploading = false;
+
+        if (response.data && response.data.rows) {
+          // 用 spUtil 触发事件，供 Catalog Client Script 捕捉
+          spUtil.trigger($scope, 'excel_data_ready', response.data.rows);
+        } else {
+          alert('解析失败，请确认格式正确（必须包含 name 和 state）');
+        }
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.upload-button {
+  display: inline-block;
+  background-color: #e0e0e0;  
+  color: #333;               
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #d5d5d5;
+  border-color: #999;
+}
+
+.upload-input-hidden {
+  display: none;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>uploadexceltomrvs</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>UploadExcelToMRVS</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.table = input && input.table || $sp.getParameter('table') || 'sc_req_item';
+  data.sys_id = input && input.sys_id || $sp.getParameter('sys_id') || '';
+
+  if (input && input.action === 'process_excel') {
+    var processor = new sn_impex.ExcelParser(); // 内建 Excel 解析器
+    var decoded = GlideStringUtil.base64DecodeAsBytes(input.base64);
+    var stream = new java.io.ByteArrayInputStream(decoded);
+    var workbook = processor.parseExcel(stream);
+
+    var rows = [];
+
+    // 解析第一张表（sheet）
+    var sheet = workbook.getSheetAt(0);
+    var header = [];
+    var rowIterator = sheet.rowIterator();
+
+    // 遍历每一行
+    while (rowIterator.hasNext()) {
+      var row = rowIterator.next();
+      var cellIterator = row.cellIterator();
+
+      var rowData = {};
+      var i = 0;
+
+      while (cellIterator.hasNext()) {
+        var cell = cellIterator.next();
+        var value = cell.toString().trim();
+
+        if (row.getRowNum() === 0) {
+          // 第一行是标题
+          header[i] = value.toLowerCase(); // 比如 'name' 或 'state'
+        } else {
+          // 数据行
+          rowData[header[i]] = value;
+        }
+        i++;
+      }
+
+      if (row.getRowNum() > 0 && Object.keys(rowData).length > 0) {
+        rows.push(rowData);
+      }
+    }
+
+    data.rows = rows;
+  }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:44:12</sys_created_on>
+        <sys_id>78c0060383f5a21016455a55eeaad336</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>UploadExcelToMRVS</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_update_name>sp_widget_78c0060383f5a21016455a55eeaad336</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-02 14:13:11</sys_updated_on>
+        <template><![CDATA[<div>
+  <label class="upload-button">
+    Upload Excel
+    <input type="file" accept=".xlsx" onchange="angular.element(this).scope().c.uploadFile(this)" class="upload-input-hidden" />
+  </label>
+</div>
+]]></template>
+    </sp_widget>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>78c0060383f5a21016455a55eeaad336</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:44:12</sys_created_on>
+        <sys_id>38c0060383f5a21016455a55eeaad33a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-02 13:44:12</sys_updated_on>
+        <table>sp_widget</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
