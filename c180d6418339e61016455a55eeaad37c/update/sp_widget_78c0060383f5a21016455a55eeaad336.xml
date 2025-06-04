@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller = function($scope, spUtil) {
-  var c = this;
+        <client_script><![CDATA[function UploadExcelToMRVSController($scope, $http) {
+$scope.uploadExcel = function(fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
 
-  c.uploading = false;
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const arrayBuffer = event.target.result;
+		
+    $http({
+      method: 'POST',
+      url: '/api/now/attachment/file',
+      params: {
+        table_name: 'sc_cart_item',
+        table_sys_id: $scope.data.sys_id,
+        file_name: file.name
+      },
+      data: arrayBuffer,
+      headers: {
+        'Content-Type': file.type || 'application/octet-stream',
+        'Accept': 'application/json'
+      },
+      transformRequest: angular.identity,
+      responseType: 'json'
+    }).then(function(response) {
+      const attachmentSysId = response.data.result.sys_id;
 
-  c.uploadFile = function(input) {
-    var file = input.files[0];
-    if (!file) return;
-
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var base64 = e.target.result.split(',')[1];
-
-      c.uploading = true;
-
-      c.server.get({
-        action: 'process_excel',
-        base64: base64,
-        filename: file.name,
-        table: c.data.table,
-        sys_id: c.data.sys_id
-      }).then(function(response) {
-        c.uploading = false;
-
-        if (response.data && response.data.rows) {
-          // 用 spUtil 触发事件，供 Catalog Client Script 捕捉
-          spUtil.trigger($scope, 'excel_data_ready', response.data.rows);
-        } else {
-          alert('解析失败，请确认格式正确（必须包含 name 和 state）');
-        }
+      const ga = new GlideAjax('x_1758036_scriptin.ExcelFromAttachmentProcessor');
+			ga.addParam('sysparm_name', 'processAttachment');
+      ga.addParam('sysparm_attachment_id', attachmentSysId);
+      ga.getXMLAnswer(function(responseJSON) {
+      $scope.page.g_form.setValue('demo_completion_progress',responseJSON);
       });
-    };
-
-    reader.readAsDataURL(file);
+    }, function(error) {
+      console.error("Upload failed:", error);
+    });
   };
+
+  reader.readAsArrayBuffer(file); 
 };
+
+}
 ]]></client_script>
         <controller_as>c</controller_as>
         <css>.upload-button {
   display: inline-block;
-  background-color: #e0e0e0;  
-  color: #333;               
-  font-weight: 500;
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: 600;
   padding: 10px 16px;
   border-radius: 6px;
-  border: 1px solid #bbb;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc;
 }
-
 .upload-button:hover {
-  background-color: #d5d5d5;
-  border-color: #999;
+  background-color: #e0e0e0;
 }
-
 .upload-input-hidden {
   display: none;
 }
@@ -74,10 +77,7 @@
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
-  if (input && input.action === 'process_excel') {
-    var processor = new ExcelUploadProcessor();
-    data.rows = processor.parseBase64(input.base64);
-  }
+  data.sys_id = $sp.getParameter('sys_id') || '';
 })();
 ]]></script>
         <servicenow>false</servicenow>
@@ -85,20 +85,18 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-06-02 13:44:12</sys_created_on>
         <sys_id>78c0060383f5a21016455a55eeaad336</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>43</sys_mod_count>
         <sys_name>UploadExcelToMRVS</sys_name>
         <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
         <sys_policy/>
         <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
         <sys_update_name>sp_widget_78c0060383f5a21016455a55eeaad336</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-03 07:04:06</sys_updated_on>
-        <template><![CDATA[<div>
-  <label class="upload-button">
-    Upload Excel
-    <input type="file" accept=".xlsx" onchange="angular.element(this).scope().c.uploadFile(this)" class="upload-input-hidden" />
-  </label>
-</div>
+        <sys_updated_on>2025-06-04 10:36:10</sys_updated_on>
+        <template><![CDATA[<label class="upload-button">
+  Upload Excel
+  <input type="file" accept=".xlsx" class="upload-input-hidden" onchange="angular.element(this).scope().uploadExcel(this)" />
+</label>
 ]]></template>
     </sp_widget>
     <sys_es_latest_script action="INSERT_OR_UPDATE">

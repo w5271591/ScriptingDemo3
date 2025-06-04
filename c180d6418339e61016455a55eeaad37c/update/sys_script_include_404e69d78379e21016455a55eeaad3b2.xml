@@ -1,32 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
-        <api_name>x_1758036_scriptin.ExcelUploadProcessor</api_name>
+        <api_name>x_1758036_scriptin.ExcelFromAttachmentProcessor</api_name>
         <caller_access/>
-        <client_callable>false</client_callable>
+        <client_callable>true</client_callable>
         <description/>
         <mobile_callable>false</mobile_callable>
-        <name>ExcelUploadProcessor</name>
+        <name>ExcelFromAttachmentProcessor</name>
         <sandbox_callable>false</sandbox_callable>
-        <script><![CDATA[var ExcelUploadProcessor = Class.create();
-ExcelUploadProcessor.prototype = {
-    initialize: function() {
-    },
+        <script><![CDATA[var ExcelFromAttachmentProcessor = Class.create();
+ExcelFromAttachmentProcessor.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    processAttachment: function() {
+        try {
+            var attachmentId = this.getParameter('sysparm_attachment_id');
+            if (!attachmentId) return '[]';
 
-    type: 'ExcelUploadProcessor'
-};]]></script>
+            var sa = new GlideSysAttachment();
+            var inputStream = sa.getContentStream(attachmentId);
+
+            var parser = new sn_impex.GlideExcelParser();
+            parser.setSheetNumber(0);
+            parser.setNullToEmpty(true);
+            parser.parse(inputStream);
+
+            var headers = parser.getColumnHeaders(); // array of column names
+            var rows = [];
+
+            while (parser.next()) {
+                var row = parser.getRow();
+                var rowData = {};
+                for (var i = 0; i < headers.length; i++) {
+                    var key = headers[i];
+                    rowData[key] = row[key] || '';
+                }
+                rows.push(rowData);
+            }
+
+            parser.close();
+            return new global.JSON().encode(rows);
+
+        } catch (e) {
+            gs.error('Excel parse error: ' + e.message);
+            return '[]';
+        }
+    },
+    type: 'ExcelFromAttachmentProcessor'
+});
+]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-06-03 07:01:58</sys_created_on>
         <sys_id>404e69d78379e21016455a55eeaad3b2</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>ExcelUploadProcessor</sys_name>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>ExcelFromAttachmentProcessor</sys_name>
         <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
         <sys_update_name>sys_script_include_404e69d78379e21016455a55eeaad3b2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-03 07:01:58</sys_updated_on>
+        <sys_updated_on>2025-06-04 10:05:14</sys_updated_on>
     </sys_script_include>
 </record_update>
