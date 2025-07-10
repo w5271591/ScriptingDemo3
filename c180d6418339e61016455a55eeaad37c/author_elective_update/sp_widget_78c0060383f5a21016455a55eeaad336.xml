@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[function UploadExcelToMRVSController($scope, $http) {
+$scope.uploadExcel = function(fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const arrayBuffer = event.target.result;
+		
+    $http({
+      method: 'POST',
+      url: '/api/now/attachment/file',
+      params: {
+        table_name: 'sc_cart_item',
+        table_sys_id: $scope.data.sys_id,
+        file_name: file.name
+      },
+      data: arrayBuffer,
+      headers: {
+        'Content-Type': file.type || 'application/octet-stream',
+        'Accept': 'application/json'
+      },
+      transformRequest: angular.identity,
+      responseType: 'json'
+    }).then(function(response) {
+      const attachmentSysId = response.data.result.sys_id;
+
+      const ga = new GlideAjax('x_1758036_scriptin.ExcelFromAttachmentProcessor');
+			ga.addParam('sysparm_name', 'processAttachment');
+      ga.addParam('sysparm_attachment_id', attachmentSysId);
+      ga.getXMLAnswer(function(responseJSON) {
+      $scope.page.g_form.setValue('demo_completion_progress',responseJSON);
+      });
+    }, function(error) {
+      console.error("Upload failed:", error);
+    });
+  };
+
+  reader.readAsArrayBuffer(file); 
+};
+
+}
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.upload-button {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc;
+}
+.upload-button:hover {
+  background-color: #e0e0e0;
+}
+.upload-input-hidden {
+  display: none;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>uploadexceltomrvs</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>UploadExcelToMRVS</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  data.sys_id = $sp.getParameter('sys_id') || '';
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:44:12</sys_created_on>
+        <sys_id>78c0060383f5a21016455a55eeaad336</sys_id>
+        <sys_mod_count>43</sys_mod_count>
+        <sys_name>UploadExcelToMRVS</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_update_name>sp_widget_78c0060383f5a21016455a55eeaad336</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-04 10:36:10</sys_updated_on>
+        <template><![CDATA[<label class="upload-button">
+  Upload Excel
+  <input type="file" accept=".xlsx" class="upload-input-hidden" onchange="angular.element(this).scope().uploadExcel(this)" />
+</label>
+]]></template>
+    </sp_widget>
+    <sys_es_latest_script action="DELETE">
+        <id>78c0060383f5a21016455a55eeaad336</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-02 13:44:12</sys_created_on>
+        <sys_id>38c0060383f5a21016455a55eeaad33a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-02 13:44:12</sys_updated_on>
+        <table>sp_widget</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</application>
+        <file_path/>
+        <instance_id>7420b230db16bd9802022a591396199e</instance_id>
+        <instance_name>dev200623</instance_name>
+        <name>sp_widget_78c0060383f5a21016455a55eeaad336</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function UploadExcelToMRVSController($scope, $http) {
+$scope.uploadExcel = function(fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const arrayBuffer = event.target.result;
+		
+    $http({
+      method: 'POST',
+      url: '/api/now/attachment/file',
+      params: {
+        table_name: 'sc_cart_item',
+        table_sys_id: $scope.data.sys_id,
+        file_name: file.name
+      },
+      data: arrayBuffer,
+      headers: {
+        'Content-Type': file.type || 'application/octet-stream',
+        'Accept': 'application/json'
+      },
+      transformRequest: angular.identity,
+      responseType: 'json'
+    }).then(function(response) {
+      const attachmentSysId = response.data.result.sys_id;
+
+      const ga = new GlideAjax('x_1758036_scriptin.ExcelFromAttachmentProcessor');
+			ga.addParam('sysparm_name', 'processAttachment');
+      ga.addParam('sysparm_attachment_id', attachmentSysId);
+      ga.getXMLAnswer(function(responseJSON) {
+      $scope.page.g_form.setValue('demo_completion_progress',responseJSON);
+      });
+    }, function(error) {
+      console.error("Upload failed:", error);
+    });
+  };
+
+  reader.readAsArrayBuffer(file); 
+};
+
+}
+]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;.upload-button {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid #ccc;
+}
+.upload-button:hover {
+  background-color: #e0e0e0;
+}
+.upload-input-hidden {
+  display: none;
+}
+&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;uploadexceltomrvs&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;UploadExcelToMRVS&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+  data.sys_id = $sp.getParameter('sys_id') || '';
+})();
+]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-06-02 13:44:12&lt;/sys_created_on&gt;&lt;sys_id&gt;78c0060383f5a21016455a55eeaad336&lt;/sys_id&gt;&lt;sys_mod_count&gt;43&lt;/sys_mod_count&gt;&lt;sys_name&gt;UploadExcelToMRVS&lt;/sys_name&gt;&lt;sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="ScriptingDemo3"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_78c0060383f5a21016455a55eeaad336&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-06-04 10:36:10&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;label class="upload-button"&gt;
+  Upload Excel
+  &lt;input type="file" accept=".xlsx" class="upload-input-hidden" onchange="angular.element(this).scope().uploadExcel(this)" /&gt;
+&lt;/label&gt;
+]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;sys_es_latest_script action="INSERT_OR_UPDATE"&gt;&lt;id&gt;78c0060383f5a21016455a55eeaad336&lt;/id&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-06-02 13:44:12&lt;/sys_created_on&gt;&lt;sys_id&gt;38c0060383f5a21016455a55eeaad33a&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-06-02 13:44:12&lt;/sys_updated_on&gt;&lt;table&gt;sp_widget&lt;/table&gt;&lt;use_es_latest&gt;true&lt;/use_es_latest&gt;&lt;/sys_es_latest_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-979233067</payload_hash>
+        <record_name>UploadExcelToMRVS</record_name>
+        <reverted_from/>
+        <source>2207e50a83752e1016455a55eeaad3af</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-06-04 10:36:10</sys_created_on>
+        <sys_id>fde863eb83f5661016455a55eeaad3a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1973a83447e0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-06-04 10:36:10</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>75e863ebf9f566108bebd540b3465ba9</update_guid>
+        <update_guid_history>75e863ebf9f566108bebd540b3465ba9:-979233067,4298eb6b59f5661096e9e7ab44baca68:1975470448,6d05e3a774f566107be970b612fb9d62:418765671,66e95be7d9b56610d8c864e499338a96:-1837640176,1d2917678db56610c96b46934a6c9d0f:-1271394782,b80997a780b56610499e6ed9df6f9a97:-578125246,61685b6789b5661047f0fab2576dc7d1:1465974091,c7a79fa311b56610dbd479c2acde85cb:-1499805420,fc27d763adb56610e91aa08829d9929e:1951675865,77e493633eb56610c819b0bb589cbb64:-1080692201,d4c2572f4475661063784747b39a873a:1777147033,4e61dfebb7756610b48bc9adb9318584:1470492793,a2c09bab68756610b4b7473cedc1d4d4:1777147033,f89f4b6b84756610846092844cef9d90:681882820,d59807afa63566107f35e1c613131b7d:2014509352,c35707efe83566104dde70297295c1f8:-1782634729,19664b2fbe356610341905d6adaa622e:1420694646,29f4832f5b356610f4f78eb53eb56a0c:1570541171,58e4cfeb3b356610572f59d26fb929f7:-1268210774,4264836b57356610dae648d7fb040430:-74283838,3314076b5b3566102ada8459357cd7cc:979492066,7da24fe763356610417e2d9d700b739c:-978622430,d0510f27e63566102dbda080ba813f1e:-863550197,675083a7ac3566108d3334aa221dce71:266275674,562f3e630d356610af0d36831616a6f2:1641282214,213ef263f535661018d657817c4bc9c4:-2094363070,92db3a6f71f1661019ef0223e7c15057:70424189,da6b366b21f16610dd9b7c12118747ce:1984579741,ef5b36ef6ff1661035da1e6c685a9f3d:-285783408,a7deb96329fd26101fc5de61c404b48b:336234308,376d3def1cbd2610b0d50cb8fe93aee7:-589213513,39f3b9e322bd2610b38e5473b49951b9:-1088633117,f6527def557d261075a76512f439dae8:1054028074,fdcea5dbe279e21058f28db097f87faa:1891068935,fffae557a079e210419a287169831f46:1794901559,b73a65170a79e2102bf46d561327bc36:-472689258,dd67860bf2f5a210b3e6530bda6c07aa:946619586,8fb44687b6f5a210e7f62d1174d9228a:1719555880,a494c287acf5a210e2e4eab1d7ec69e8:-541654934,5334864720f5a2101cf72db1cb4f8ff6:-2039627772,d3f3864779f5a21016150727c27e211d:1252665321,f813020734f5a2103bd099001547b887:-1158965555,b5524e8356f5a2104b3d018822f63eb1:1548725884,b4c00603bdf5a210aad5470e97d17339:1407887896</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="UploadExcelToMRVS">1e35b27683e2e21016455a55eeaad3ae</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 05:42:02</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>ad8d923dab72456abed90114b30c2d51</sys_id>
+        <sys_metadata>78c0060383f5a21016455a55eeaad336</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UploadExcelToMRVS</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_scope_delete display_value="">881f797c73974038955b3a07d78ba110</sys_scope_delete>
+        <sys_update_name>sp_widget_78c0060383f5a21016455a55eeaad336</sys_update_name>
+        <sys_update_version display_value="sp_widget_78c0060383f5a21016455a55eeaad336">fde863eb83f5661016455a55eeaad3a9</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 05:42:02</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

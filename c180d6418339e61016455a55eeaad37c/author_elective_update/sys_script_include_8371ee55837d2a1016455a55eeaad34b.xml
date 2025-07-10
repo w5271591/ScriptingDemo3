@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1758036_scriptin.PDFGenerator</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>true</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>PDFGenerator</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PDFGenerator = Class.create();
+PDFGenerator.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+  createPDF: function() {
+    var html = "<h2>Generate a PDF file in the Scripting Demo</h2>";
+    var table = "sys_user";       
+    var recordId = gs.getUserID();
+    var filename = "ScriptingDemo";
+
+    try {
+      var pdfGen = new sn_pdfgeneratorutils.PDFGenerationAPI();
+      var result = pdfGen.convertToPDF(html, table, recordId, filename);
+
+      if (result.status === "success") {        
+        return "/sys_attachment.do?sys_id=" + result.attachment_id;
+      } else {        
+        return null;
+      }
+    } catch (e) {
+      gs.error("Exception: " + (e.message || e));
+      return null;
+    }
+  },
+
+  type: 'PDFGenerator'
+});
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-28 05:38:45</sys_created_on>
+        <sys_id>8371ee55837d2a1016455a55eeaad34b</sys_id>
+        <sys_mod_count>28</sys_mod_count>
+        <sys_name>PDFGenerator</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_update_name>sys_script_include_8371ee55837d2a1016455a55eeaad34b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-28 09:00:40</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</application>
+        <file_path/>
+        <instance_id>7420b230db16bd9802022a591396199e</instance_id>
+        <instance_name>dev200623</instance_name>
+        <name>sys_script_include_8371ee55837d2a1016455a55eeaad34b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;x_1758036_scriptin.PDFGenerator&lt;/api_name&gt;&lt;caller_access&gt;1&lt;/caller_access&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;mobile_callable&gt;false&lt;/mobile_callable&gt;&lt;name&gt;PDFGenerator&lt;/name&gt;&lt;sandbox_callable&gt;false&lt;/sandbox_callable&gt;&lt;script&gt;&lt;![CDATA[var PDFGenerator = Class.create();
+PDFGenerator.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+  createPDF: function() {
+    var html = "&lt;h2&gt;Generate a PDF file in the Scripting Demo&lt;/h2&gt;";
+    var table = "sys_user";       
+    var recordId = gs.getUserID();
+    var filename = "ScriptingDemo";
+
+    try {
+      var pdfGen = new sn_pdfgeneratorutils.PDFGenerationAPI();
+      var result = pdfGen.convertToPDF(html, table, recordId, filename);
+
+      if (result.status === "success") {        
+        return "/sys_attachment.do?sys_id=" + result.attachment_id;
+      } else {        
+        return null;
+      }
+    } catch (e) {
+      gs.error("Exception: " + (e.message || e));
+      return null;
+    }
+  },
+
+  type: 'PDFGenerator'
+});
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-05-28 05:38:45&lt;/sys_created_on&gt;&lt;sys_id&gt;8371ee55837d2a1016455a55eeaad34b&lt;/sys_id&gt;&lt;sys_mod_count&gt;28&lt;/sys_mod_count&gt;&lt;sys_name&gt;PDFGenerator&lt;/sys_name&gt;&lt;sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_package&gt;&lt;sys_policy&gt;read&lt;/sys_policy&gt;&lt;sys_scope display_value="ScriptingDemo3"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_8371ee55837d2a1016455a55eeaad34b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-05-28 09:00:40&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>483133278</payload_hash>
+        <record_name>PDFGenerator</record_name>
+        <reverted_from/>
+        <source>0ba0d6818339e61016455a55eeaad34d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-28 09:00:40</sys_created_on>
+        <sys_id>22efc79183716a1016455a55eeaad3e6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>197161f516c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-28 09:00:40</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>e2efc7594c316a101e6f227d111c7211</update_guid>
+        <update_guid_history>e2efc7594c316a101e6f227d111c7211:483133278,03bd0f5dc0316a103247c92919df3dce:-1253624019,cea90b9982316a106d8d430f93cde713:-781563097,2e9987997b316a103d798d9643c59bf5:-1036704563,4f694bd52d316a10eb5788bf67a00254:-1599328258,a6b8075988316a108e7c0f3667b3d6ef:1790637709,b4c7cfd517316a10f8e86b206e07a8cd:711394362,cb47079513316a105fe8cbe0e660f13c:26212083,3d66435596316a10adca8a47df61cd1f:-1106586670,85858355ee316a10728c388a5d25c73c:-1339880679,eff4c715f8316a1006f655851656d8ae:924713651,cb434b1518fd2a107bdd5dfa1d0ec1d4:-679560907,7734b21da9bd2a1024c1890322506936:-1190888762,c9a3fa5da8bd2a10b4fed16a3b812b7f:263346445,1d627a9915bd2a1093126997fdce1f21:-1190888762,bf12f2d597bd2a104dbd653510376f82:185426780,a8f072959fbd2a10e0d34605a808d467:1108119787,eebda6558abd2a100a8d8c0efcb4dc99:1032772643,3aada655dabd2a1003e4895125946afd:370218401,fc2d66d1dfbd2a10dd349e2114b5fd6b:1953212205,467cea9123bd2a107dcdf79e7f03516b:1347766435,b65cea91fcbd2a1099c60bc2e0467753:183140966,f49bee9185bd2a10738f668cc465e6a6:1820318537,d41b2a513abd2a10a697c37aff39946e:497380024,06baae11debd2a1086c186498a7278b3:1820318537,474aaa51a4bd2a100354e191f908cc3e:497380024,0849621119bd2a1091949ab2284c4a92:1879345301,89196e5d3f7d2a10c8f94615b7300332:-173846433,89b1e2959b7d2a10ca58e783679e41ce:-1573961941</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 06:05:49</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>03658080424f4bfc805a8629c9b9e910</sys_id>
+        <sys_metadata>8371ee55837d2a1016455a55eeaad34b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PDFGenerator</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_parent/>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_scope_delete display_value="">881f797c73974038955b3a07d78ba110</sys_scope_delete>
+        <sys_update_name>sys_script_include_8371ee55837d2a1016455a55eeaad34b</sys_update_name>
+        <sys_update_version display_value="sys_script_include_8371ee55837d2a1016455a55eeaad34b">22efc79183716a1016455a55eeaad3e6</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 06:05:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

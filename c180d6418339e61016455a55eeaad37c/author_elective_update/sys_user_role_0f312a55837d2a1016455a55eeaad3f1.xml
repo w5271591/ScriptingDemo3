@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="DELETE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1758036_scriptin.user</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>user</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-28 05:36:58</sys_created_on>
+        <sys_id>0f312a55837d2a1016455a55eeaad3f1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1758036_scriptin.user</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_update_name>sys_user_role_0f312a55837d2a1016455a55eeaad3f1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-28 05:36:58</sys_updated_on>
+    </sys_user_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</application>
+        <file_path/>
+        <instance_id>7420b230db16bd9802022a591396199e</instance_id>
+        <instance_name>dev200623</instance_name>
+        <name>sys_user_role_0f312a55837d2a1016455a55eeaad3f1</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><grantable>true</grantable><includes_roles/><name>x_1758036_scriptin.user</name><scoped_admin>false</scoped_admin><suffix>user</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-05-28 05:36:58</sys_created_on><sys_id>0f312a55837d2a1016455a55eeaad3f1</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_1758036_scriptin.user</sys_name><sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package><sys_policy/><sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope><sys_update_name>sys_user_role_0f312a55837d2a1016455a55eeaad3f1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-05-28 05:36:58</sys_updated_on></sys_user_role></record_update>]]></payload>
+        <payload_hash>-1126699901</payload_hash>
+        <record_name>x_1758036_scriptin.user</record_name>
+        <reverted_from/>
+        <source>0ba0d6818339e61016455a55eeaad34d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-28 05:36:58</sys_created_on>
+        <sys_id>b2416a55837d2a1016455a55eeaad3f3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1971564d3900000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-28 05:36:58</sys_updated_on>
+        <type>Role</type>
+        <update_guid>b6416a558d7d2a103bc078d7767c8cf2</update_guid>
+        <update_guid_history>b6416a558d7d2a103bc078d7767c8cf2:-1126699901</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_1758036_scriptin.user">2f55f2b683e2e21016455a55eeaad355</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 05:42:40</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role">sys_user_role</sys_db_object>
+        <sys_id>44e19f4b87544c029454947d403c1369</sys_id>
+        <sys_metadata>0f312a55837d2a1016455a55eeaad3f1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1758036_scriptin.user</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_scope_delete display_value="">881f797c73974038955b3a07d78ba110</sys_scope_delete>
+        <sys_update_name>sys_user_role_0f312a55837d2a1016455a55eeaad3f1</sys_update_name>
+        <sys_update_version display_value="sys_user_role_0f312a55837d2a1016455a55eeaad3f1">b2416a55837d2a1016455a55eeaad3f3</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 05:42:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

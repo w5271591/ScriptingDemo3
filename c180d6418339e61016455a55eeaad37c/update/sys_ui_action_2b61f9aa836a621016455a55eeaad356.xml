@@ -2,12 +2,12 @@
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name/>
         <active>true</active>
-        <client>false</client>
+        <client>true</client>
         <client_script_v2><![CDATA[function onClick(g_form) {
 
 }]]></client_script_v2>
         <comments/>
-        <condition>current.request_item.cat_item.getDisplayValue() == "Request A ReSubmit Item" </condition>
+        <condition/>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_button_v2>false</form_button_v2>
@@ -17,7 +17,7 @@
         <form_style/>
         <format_for_configurable_workspace>false</format_for_configurable_workspace>
         <hint/>
-        <isolate_script>false</isolate_script>
+        <isolate_script>true</isolate_script>
         <list_action>false</list_action>
         <list_banner_button>false</list_banner_button>
         <list_button>false</list_button>
@@ -27,39 +27,39 @@
         <list_save_with_form_button>false</list_save_with_form_button>
         <list_style/>
         <messages/>
-        <name>Return To Requestor</name>
-        <onclick/>
-        <order>100</order>
-        <script><![CDATA[current.state = 4; //Closed InComplete : 4
-current.update();
+        <name>UpdateShortDescription</name>
+        <onclick>openConfirmDialog()</onclick>
+        <order>200</order>
+        <script><![CDATA[function openConfirmDialog() {
+    var sysId = g_form.getUniqueValue();
 
-var ritm = new GlideRecord('sc_req_item');
-if (ritm.get(current.request_item)) {
-  ritm.u_custom_state = 'Rejected';
-  ritm.update();
-}
+    var gdw = new GlideDialogWindow("x_1758036_scriptin_ConfirmAndUpdate");
 
-]]></script>
+    gdw.setTitle("Confirm");
+
+    gdw.setPreference("sys_id", sysId);
+    gdw.render(); 
+}]]></script>
         <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
         <show_update>true</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-06-01 07:29:20</sys_created_on>
+        <sys_created_on>2025-07-08 06:10:08</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>b8b06faa8375221016455a55eeaad361</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>Return To Requestor</sys_name>
+        <sys_id>2b61f9aa836a621016455a55eeaad356</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>UpdateShortDescription</sys_name>
         <sys_overrides/>
         <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
         <sys_policy/>
         <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
-        <sys_update_name>sys_ui_action_b8b06faa8375221016455a55eeaad361</sys_update_name>
+        <sys_update_name>sys_ui_action_2b61f9aa836a621016455a55eeaad356</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-07-10 06:19:55</sys_updated_on>
-        <table>sc_task</table>
+        <sys_updated_on>2025-07-08 06:50:20</sys_updated_on>
+        <table>incident</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
     </sys_ui_action>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="DELETE">
+        <category>homepages</category>
+        <client_script><![CDATA[function generatePDF() {
+    var ga = new GlideAjax('PDFGenerator');
+    ga.addParam('sysparm_name', 'createPDF');
+    ga.getXMLAnswer(function(response) {
+        var url = response;
+        window.location = url;
+    });
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_1758036_scriptin_PdfDownload.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+    <html>
+
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 30px;
+                background-color: #f9f9f9;
+            }
+
+            .container {
+                max-width: 400px;
+                margin: 50px auto;
+                padding: 20px;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Scripting Demo 1</h2>
+            <button onclick="generatePDF()">Download PDF</button>
+        </div>
+    </body>
+
+    </html>
+</j:jelly>]]></html>
+        <name>PdfDownload</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-28 05:37:21</sys_created_on>
+        <sys_id>ddc0ee15837d2a1016455a55eeaad347</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>PdfDownload</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_update_name>sys_ui_page_ddc0ee15837d2a1016455a55eeaad347</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-28 09:43:58</sys_updated_on>
+    </sys_ui_page>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</application>
+        <file_path/>
+        <instance_id>7420b230db16bd9802022a591396199e</instance_id>
+        <instance_name>dev200623</instance_name>
+        <name>sys_ui_page_ddc0ee15837d2a1016455a55eeaad347</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_page"&gt;&lt;sys_ui_page action="INSERT_OR_UPDATE"&gt;&lt;category&gt;homepages&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[function generatePDF() {
+    var ga = new GlideAjax('PDFGenerator');
+    ga.addParam('sysparm_name', 'createPDF');
+    ga.getXMLAnswer(function(response) {
+        var url = response;
+        window.location = url;
+    });
+}]]&gt;&lt;/client_script&gt;&lt;description/&gt;&lt;direct&gt;false&lt;/direct&gt;&lt;endpoint&gt;x_1758036_scriptin_PdfDownload.do&lt;/endpoint&gt;&lt;html&gt;&lt;![CDATA[&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null"&gt;
+    &lt;html&gt;
+
+    &lt;head&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, sans-serif;
+                padding: 30px;
+                background-color: #f9f9f9;
+            }
+
+            .container {
+                max-width: 400px;
+                margin: 50px auto;
+                padding: 20px;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class="container"&gt;
+            &lt;h2&gt;Scripting Demo 1&lt;/h2&gt;
+            &lt;button onclick="generatePDF()"&gt;Download PDF&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+
+    &lt;/html&gt;
+&lt;/j:jelly&gt;]]&gt;&lt;/html&gt;&lt;name&gt;PdfDownload&lt;/name&gt;&lt;processing_script/&gt;&lt;sys_class_name&gt;sys_ui_page&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2025-05-28 05:37:21&lt;/sys_created_on&gt;&lt;sys_id&gt;ddc0ee15837d2a1016455a55eeaad347&lt;/sys_id&gt;&lt;sys_mod_count&gt;12&lt;/sys_mod_count&gt;&lt;sys_name&gt;PdfDownload&lt;/sys_name&gt;&lt;sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="ScriptingDemo3"&gt;c180d6418339e61016455a55eeaad37c&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_page_ddc0ee15837d2a1016455a55eeaad347&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2025-05-28 09:43:58&lt;/sys_updated_on&gt;&lt;/sys_ui_page&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1213428028</payload_hash>
+        <record_name>PdfDownload</record_name>
+        <reverted_from/>
+        <source>0ba0d6818339e61016455a55eeaad34d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-05-28 09:43:58</sys_created_on>
+        <sys_id>c1d99b5983716a1016455a55eeaad3b2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1971646f6780000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-05-28 09:43:58</sys_updated_on>
+        <type>UI Page</type>
+        <update_guid>49d99b5963716a1077ebd6fbad897fb1</update_guid>
+        <update_guid_history>49d99b5963716a1077ebd6fbad897fb1:-1213428028,ccf59b5964716a10fde4cfdac4ca1cbd:1544197045,d74e879d3a316a10be1457c5666ea929:69126268,fa1e879d37316a100f8529cb936e2a24:-402345218,c231f6952dbd2a10d45af0b2e5f74161:-396405097,ebcf2e1991bd2a107b3beb07b1eda805:-874983998,01992a11fcbd2a1057bd0aec8c4391ea:-340236953,70c6e25d8f7d2a100bf94c5c38a15d36:2095410803,e9a6ae1ddf7d2a104a692c7706d2d4bb:-827498256,5ae3aad5567d2a10dd52289860d94356:-1538856422,6863e2952a7d2a10e62743c6cc77b9d3:-1507035113,23c2aad5fa7d2a10736fdfe28300b64e:631133711,2c612e55877d2a10b78cf1256e373457:1918165985</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 06:05:59</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_page">sys_ui_page</sys_db_object>
+        <sys_id>8d39f26d92524fe5afc4acbe0b36e781</sys_id>
+        <sys_metadata>ddc0ee15837d2a1016455a55eeaad347</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PdfDownload</sys_name>
+        <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
+        <sys_scope_delete display_value="">881f797c73974038955b3a07d78ba110</sys_scope_delete>
+        <sys_update_name>sys_ui_page_ddc0ee15837d2a1016455a55eeaad347</sys_update_name>
+        <sys_update_version display_value="sys_ui_page_ddc0ee15837d2a1016455a55eeaad347">c1d99b5983716a1016455a55eeaad3b2</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 06:05:59</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

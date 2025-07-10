@@ -1,89 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[function confirmAndUpdate() {
-    if (confirm("Do you want to update the field?")) {
-        var ga = new GlideAjax('UpdateFieldAjax');
-        ga.addParam('sysparm_name', 'updateField');
-        ga.getXMLAnswer(function(response) {
-            document.getElementById('myField').value = response;
-        });
-    }
+        <client_script><![CDATA[function confirmUpdate(event) {
+    var gdw = GlideDialogWindow.get();
+	var sys_id = gdw.getPreference("sys_id");
+
+    var ga = new GlideAjax('UpdateFieldAjax');
+    ga.addParam('sysparm_name', 'updateField');
+	ga.addParam('sys_id', sys_id);
+	ga.addParam('update_field', 'short_description');
+	ga.addParam('update_value', 'ScriptingDemo3');
+    ga.getXMLAnswer(function(response) {
+    });
+	gdw.destroy();
+}
+
+function cancelUpdate(event) {
+    GlideDialogWindow.get().destroy();
 }]]></client_script>
         <description/>
         <direct>false</direct>
-        <endpoint>x_1758036_scriptin_confirmAndUpdate.do</endpoint>
+        <endpoint>x_1758036_scriptin_ConfirmAndUpdate.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
-    <html>
-
-    <head>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                padding: 30px;
-                background-color: #f9f9f9;
-            }
-
-            .container {
-                max-width: 400px;
-                margin: 50px auto;
-                padding: 20px;
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
-
-            input[type="text"] {
-                width: 80%;
-                padding: 10px;
-                font-size: 16px;
-                margin-bottom: 20px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-
-            button {
-                padding: 10px 20px;
-                font-size: 16px;
-                background-color: #007bff;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            button:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="container">
-            <h2>Scripting Demo 2</h2>
-            <input type="text" id="myField" value="Original value" />
-            <br />
-            <button onclick="confirmAndUpdate()">Update Field</button>
+    <div style="padding:20px; text-align:center;">
+        <p style="font-size: 1.2em; margin-bottom: 20px;">
+            Do you want to update the Short Description with<br />
+            <strong>'ScriptingDemo3'</strong>?
+        </p>
+        <div style="margin-top: 10px;">
+            <button class="btn btn-success" style="min-width:80px; margin:0 10px;" onclick="confirmUpdate()">
+                OK
+            </button>
+            <button class="btn btn-secondary" style="min-width:80px; margin:0 10px;" onclick="cancelUpdate();">
+                Cancel
+            </button>
         </div>
-    </body>
-
-    </html>
+    </div>
 </j:jelly>]]></html>
-        <name>confirmAndUpdate</name>
+        <name>ConfirmAndUpdate</name>
         <processing_script/>
         <sys_class_name>sys_ui_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-05-28 09:09:35</sys_created_on>
         <sys_id>a9a1979983316a1016455a55eeaad3fe</sys_id>
-        <sys_mod_count>9</sys_mod_count>
-        <sys_name>confirmAndUpdate</sys_name>
+        <sys_mod_count>44</sys_mod_count>
+        <sys_name>ConfirmAndUpdate</sys_name>
         <sys_package display_value="ScriptingDemo3" source="x_1758036_scriptin">c180d6418339e61016455a55eeaad37c</sys_package>
         <sys_policy/>
         <sys_scope display_value="ScriptingDemo3">c180d6418339e61016455a55eeaad37c</sys_scope>
         <sys_update_name>sys_ui_page_a9a1979983316a1016455a55eeaad3fe</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-05-28 09:45:01</sys_updated_on>
+        <sys_updated_on>2025-07-09 05:52:23</sys_updated_on>
     </sys_ui_page>
 </record_update>
